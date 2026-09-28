@@ -7,10 +7,8 @@ $(document).ready(function () {
       return;
     }
 
-    // 1. Limpiar la tabla antes de cargar nueva información
     $("#repos-table-body").empty();
 
-    // 2. Realizar la petición
     $.get("https://api.github.com/users/" + username + "/repos")
       .done(function (getrepos) {
         if (getrepos.length === 0) {
@@ -39,7 +37,6 @@ $(document).ready(function () {
         });
       })
       .fail(function () {
-        // 3. Capturar errores (por ejemplo, si el usuario no existe - Error 404)
         $("#repos-table-body").html(`
             <tr>
                 <td colspan="4" class="text-center text-danger">User not found or an error occurred.</td>
